@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.pd2.utils.TextCounter;
+import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.util.TextUtils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -49,10 +51,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onBtnCountClick(View view) {
-        if(this.spSelectionOp.getSelectedItem().toString().equalsIgnoreCase("Number of characters")) {
+        if(TextUtils.isEmpty(this.edUserInput.getText().toString())) {
+            Toast.makeText(this, "The input is empty", Toast.LENGTH_SHORT).show();
+        }
+        else if(this.spSelectionOp.getSelectedItem().toString().equalsIgnoreCase("Number of characters")) {
             String userPhrase = this.edUserInput.getText().toString();
             int charsCount = TextCounter.getCharsCount(userPhrase);
             this.tvCountResult.setText(String.valueOf(charsCount));
+        }
+        else if(this.spSelectionOp.getSelectedItem().toString().equalsIgnoreCase("Number of words")) {
+            String userPhrase = this.edUserInput.getText().toString();
+            int wordsCount = TextCounter.getWordsCount(userPhrase);
+            this.tvCountResult.setText(String.valueOf(wordsCount));
         }
         else{
             this.tvCountResult.setText("Invalid option");
