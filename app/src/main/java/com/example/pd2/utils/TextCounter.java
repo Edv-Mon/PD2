@@ -21,5 +21,16 @@ public class TextCounter {
         }
         return count;
     }
+
+    public static int getNumbersCount(String userInput) {
+        Pattern pattern = Pattern.compile("\\b[+-]?\\d+(?:[.,]\\d+)?\\b");
+        Matcher matcher = pattern.matcher(userInput);
+
+        int count = 0;
+        while (matcher.find()) {
+            count++;
+        }
+        return count;
+    }
 }
 

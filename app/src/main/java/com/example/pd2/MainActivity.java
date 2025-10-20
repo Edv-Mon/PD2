@@ -69,6 +69,11 @@ public class MainActivity extends AppCompatActivity {
             int sentencesCount = TextCounter.getSentencesCount(userPhrase);
             this.tvCountResult.setText(String.valueOf(sentencesCount));
         }
+        else if(this.spSelectionOp.getSelectedItem().toString().equalsIgnoreCase("Number of numbers")) {
+            String userPhrase = this.edUserInput.getText().toString();
+            int numbersCount = TextCounter.getNumbersCount(userPhrase);
+            this.tvCountResult.setText(String.valueOf(numbersCount));
+        }
         else{
             this.tvCountResult.setText("Invalid option");
         }
