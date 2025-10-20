@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name" translatable="false">PD2</string>
+
+    <string-array name="count_options">
+        <item>Number of sentences</item>
+        <item>Number of words</item>
+        <item>Number of characters</item>
+        <item>Number of numbers</item>
+    </string-array>
+</resources>
