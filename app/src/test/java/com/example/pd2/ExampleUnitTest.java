@@ -31,6 +31,13 @@ public class ExampleUnitTest {
     }
 
     @Test
+    public void testGetWordsCount_Bug() {
+         // This test is expected to fail with the current implementation
+         assertEquals(0, TextCounter.getWordsCount(""));
+         assertEquals(0, TextCounter.getWordsCount("   "));
+    }
+
+    @Test
     public void testGetSentencesCount() {
         assertEquals(1, TextCounter.getSentencesCount("Hello world."));
         assertEquals(3, TextCounter.getSentencesCount("Hello world. How are you? I am fine!"));
